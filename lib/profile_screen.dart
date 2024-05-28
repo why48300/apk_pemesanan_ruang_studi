@@ -37,22 +37,30 @@ class ProfileScreen extends StatelessWidget {
                   
                       ListTile(
                         leading: Icon(Icons.person, color: Colors.blue),
-                        title: Text('Nama: Budi Santoso', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                      title: Text('Nama: Bagus Saputra',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold)),
                       ),
                       Divider(),
                       ListTile(
                         leading: Icon(Icons.credit_card, color: Colors.blue),
-                        title: Text('NIM: 123456789', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                      title: Text('NIM: 220103100',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold)),
                       ),
                       Divider(),
                       ListTile(
                         leading: Icon(Icons.class_, color: Colors.blue),
-                        title: Text('Kelas: IF-1A', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                      title: Text('Kelas: TI22A3',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold)),
                       ),
                       Divider(),
                       ListTile(
                         leading: Icon(Icons.school, color: Colors.blue),
-                        title: Text('Program Studi: Teknik Informatika', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                      title: Text('Program Studi: S1-Teknik Informatika',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold)),
                       ),
                       SizedBox(height: 20), // Space before the button
               Center(

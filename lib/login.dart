@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart'; // Import halaman home_page.dart
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'home_page.dart';
+import 'package:lottie/lottie.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -22,7 +25,6 @@ class LoginPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                // Gambar Logo
                 Container(
                   margin: EdgeInsets.only(bottom: 20),
                   child: Image.asset(
@@ -58,14 +60,22 @@ class LoginPage extends StatelessWidget {
                   obscureText: true,
                 ),
                 SizedBox(height: 20),
-                // Tombol Login
+                
+                ElevatedButton(
+                    onPressed: () {
+                      Get.to(() => HomePage());
+                    },
+                    child: Lottie.asset('assets/lottie/arrow.json',
+                        height: 50, width: 50)),
+
                 ElevatedButton(
                   onPressed: () {
                     // Navigasi ke home_page.dart saat tombol login ditekan
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => HomePage()),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => HomePage()),
+                    // );
+                    Get.to(() => HomePage());
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white, // Warna tombol
@@ -82,6 +92,13 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                 ),
+
+                GestureDetector(
+                    onTap: () {
+                      Get.to(() => HomePage());
+                    },
+                    child: Lottie.asset('assets/lottie/attention.json',
+                        height: 50, width: 50)),
               ],
             ),
           ),
