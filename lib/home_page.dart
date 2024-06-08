@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 import 'package:pemesanan_ruang_studi/home_pageLR.dart';
+import 'package:pemesanan_ruang_studi/login.dart';
 import 'home_screen.dart';
 import 'riwayat_pemesanan.dart';
 import 'profile_screen.dart';  // Pastikan ini mengarah ke file yang tepat
@@ -10,6 +13,16 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Home Page'),
+        actions: [
+          IconButton(
+              onPressed: () async {
+                var box = await Hive.openBox('userBox');
+                // await box.clear();
+                await box.put("sudahLogin", false);
+                Get.off(() => LoginPage());
+              },
+              icon: Icon(Icons.logout))
+        ],
       ),
       drawer: Drawer(
         child: ListView(

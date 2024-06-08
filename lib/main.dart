@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:pemesanan_ruang_studi/home_pageLR.dart';
+import 'package:pemesanan_ruang_studi/splash_screen.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePageLR(),
+      home: SplashScreen(),
     );
   }
 }
