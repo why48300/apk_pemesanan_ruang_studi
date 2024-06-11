@@ -5,7 +5,7 @@ import 'package:pemesanan_ruang_studi/home_pageLR.dart';
 import 'package:pemesanan_ruang_studi/login.dart';
 import 'home_screen.dart';
 import 'riwayat_pemesanan.dart';
-import 'profile_screen.dart';  // Pastikan ini mengarah ke file yang tepat
+import 'profile_screen.dart';  
 
 class HomePage extends StatelessWidget {
   @override
@@ -36,11 +36,11 @@ class HomePage extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 30,
-                    backgroundImage: AssetImage('assets/gambar/foto.jpg'), // Ganti dengan path gambar profil Anda
+                    backgroundImage: AssetImage('assets/gambar/foto.jpg'), 
                   ),
                   SizedBox(height: 10),
                   Text(
-                    'Bagus Saputra', // Ganti dengan nama Anda
+                    'Bagus Saputra', 
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,

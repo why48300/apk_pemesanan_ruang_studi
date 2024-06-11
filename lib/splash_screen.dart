@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pemesanan_ruang_studi/home_page.dart';
-import 'package:pemesanan_ruang_studi/home_pageLR.dart';
+import 'package:pemesanan_ruang_studi/login.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
       if (box.get("sudahLogin") == true) {
         Get.off(() => HomePage());
       } else {
-        Get.off(() => HomePageLR());
+        Get.off(() => LoginPage());
       }
     });
   }
@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Lottie.asset('asets/lottie/attention.json', height: 50),
+        child: Lottie.asset('assets/lottie/attention.json', height: 50),
       ),
     );
   }
