@@ -1,123 +1,154 @@
 import 'package:flutter/material.dart';
-import 'package:pemesanan_ruang_studi/home_pageLR.dart';
 
 class RegisterPage extends StatelessWidget {
+  const RegisterPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Register'),
-      ),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Colors.blue, Colors.indigo], // Warna latar belakang gradient
+      body: Stack(
+        children: [
+          Container(
+            height: double.infinity,
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              color: Color.fromARGB(255, 0, 170, 255),
+            ),
           ),
-        ),
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
+          const Padding(
+            padding: EdgeInsets.only(top: 10.0, left: 22),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                // TextField untuk Nama Lengkap
-                TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Nama Lengkap',
-                    filled: true,
-                    fillColor: Colors.white, // Warna latar belakang input
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    prefixIcon: Icon(Icons.person), // Icon Nama Lengkap
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Tambahkan gambar logo di sini
+                Center(
+                  child: Image(
+                    image: AssetImage(
+                        'assets/SUKAMAJU.png'), // Ganti dengan path gambar logo Anda
+                    width: 100,
+                    height: 100,
                   ),
                 ),
                 SizedBox(height: 20),
-                // TextField untuk NIM
-                TextField(
-                  decoration: InputDecoration(
-                    labelText: 'NIM',
-                    filled: true,
-                    fillColor: Colors.white, // Warna latar belakang input
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    prefixIcon: Icon(Icons.credit_card), // Icon NIM
-                  ),
-                ),
-                SizedBox(height: 20),
-
-                TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Kelas',
-                    filled: true,
-                    fillColor: Colors.white, // Warna latar belakang input
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    prefixIcon: Icon(Icons.class_), // Icon NIM
-                  ),
-                ),
-                SizedBox(height: 20),
-                
-                TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Prodi',
-                    filled: true,
-                    fillColor: Colors.white, // Warna latar belakang input
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    prefixIcon: Icon(Icons.school), // Icon NIM
-                  ),
-                ),
-                SizedBox(height: 20),
-
-                TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    filled: true,
-                    fillColor: Colors.white, // Warna latar belakang input
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    prefixIcon: Icon(Icons.lock), // Icon Password
-                  ),
-                  obscureText: true,
-                ),
-                SizedBox(height: 20),
-                // Tombol Register
-                ElevatedButton(
-                  onPressed: () {
-                    // Implementasi logika pendaftaran di sini
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => HomePageLR()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white, // Warna tombol
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20), // Padding tombol
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  child: Text(
-                    'Register',
-                    style: TextStyle(
-                      color: Colors.blue, // Warna teks tombol
-                      fontSize: 18,
-                    ),
+                Text(
+                  'Register',
+                  style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
             ),
           ),
-        ),
+          Padding(
+            padding: const EdgeInsets.only(top: 200.0),
+            child: Container(
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(40),
+                  topRight: Radius.circular(40),
+                ),
+                color: Colors.white,
+              ),
+              height: double.infinity,
+              width: double.infinity,
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                          height: MediaQuery.of(context).viewInsets.bottom == 0
+                              ? 100
+                              : 50),
+                      const TextField(
+                        decoration: InputDecoration(
+                          label: Text(
+                            'Nama Lengkap',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 0, 191, 255),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const TextField(
+                        decoration: InputDecoration(
+                          label: Text(
+                            'Nomor Induk Mahasiswa',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 0, 195, 255),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const TextField(
+                        decoration: InputDecoration(
+                          label: Text(
+                            'Password',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 0, 195, 255),
+                            ),
+                          ),
+                        ),
+                        obscureText: true,
+                      ),
+                      const SizedBox(height: 10),
+                      const SizedBox(height: 70),
+                      Container(
+                        height: 55,
+                        width: 300,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: Color.fromARGB(255, 0, 170, 255),
+                        ),
+                        child: const Center(
+                          child: Text(
+                            'Register',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 80),
+                      const Align(
+                        alignment: Alignment.bottomRight,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              "Don't have account?",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                              ),
+                            ),
+                            Text(
+                              "Sign up",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 17,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
 }
-

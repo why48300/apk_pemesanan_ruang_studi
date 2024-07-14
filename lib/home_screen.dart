@@ -17,56 +17,70 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Colors.blue, Colors.indigo], // Warna latar belakang gradient
+          image: DecorationImage(
+            image: AssetImage('assets/Ruang3.jpg'),
+            fit: BoxFit.cover,
           ),
         ),
         child: ListView.builder(
           itemCount: rooms.length,
           itemBuilder: (context, index) {
             return Card(
-              elevation: 5, // Ketebalan shadow card
-              margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5), // Margin card
+              elevation: 8,
+              margin: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10), // Border radius card
+                borderRadius: BorderRadius.circular(15),
               ),
-              child: ListTile(
-                leading: Icon(
-                  Icons.meeting_room, // Icon ruang
-                  color: Colors.blue, // Warna icon
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.blue.shade300, Colors.indigo.shade600],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  borderRadius: BorderRadius.circular(15),
                 ),
-                title: Text(
-                  rooms[index].name,
-                  style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0)), // Warna teks judul
-                ),
-                subtitle: Row(
-                  children: [
-                    Icon(
-                      Icons.people, // Icon kapasitas
-                      color: const Color.fromARGB(255, 0, 0, 0), // Warna icon
+                child: ListTile(
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  leading: Icon(
+                    Icons.meeting_room,
+                    color: Colors.white,
+                    size: 30,
+                  ),
+                  title: Text(
+                    rooms[index].name,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
                     ),
-                    SizedBox(width: 5), // Spasi antara icon dan teks
-                    Text(
-                      'Kapasitas: ${rooms[index].capacity}',
-                      style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)), // Warna teks subtitle
-                    ),
-                  ],
-                ),
-                trailing: rooms[index].available
-                    ? Icon(Icons.check_circle, color: Colors.green) // Icon ruang tersedia
-                    : Icon(Icons.cancel, color: Colors.red), // Icon ruang tidak tersedia
-                onTap: () {
-                  if (rooms[index].available) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => BookingScreen(room: rooms[index]),
+                  ),
+                  subtitle: Row(
+                    children: [
+                      Icon(Icons.people, color: Colors.white),
+                      SizedBox(width: 5),
+                      Text(
+                        'Kapasitas: ${rooms[index].capacity}',
+                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
-                    );
-                  }
-                },
+                    ],
+                  ),
+                  trailing: rooms[index].available
+                      ? Icon(Icons.check_circle, color: Colors.green, size: 30)
+                      : Icon(Icons.cancel, color: Colors.red, size: 30),
+                  onTap: () {
+                    if (rooms[index].available) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              BookingScreen(room: rooms[index], index: index),
+                        ),
+                      );
+                    }
+                  },
+                ),
               ),
             );
           },
