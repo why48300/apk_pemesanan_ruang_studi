@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "21779974087",
+    "project_id": "pesanruang-402b1",
+    "storage_bucket": "pesanruang-402b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21779974087:android:002f2ba759bcdba34afbe2",
+        "android_client_info": {
+          "package_name": "com.example.pemesanan_ruang_studi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAH4A2YABIUWbz_JPAzTjEYe4-MiS1x2A4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
