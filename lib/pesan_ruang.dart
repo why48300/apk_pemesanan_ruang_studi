@@ -93,8 +93,9 @@ class _PesanRuangScreenState extends State<PesanRuangScreen> {
                     trailingIcon: Icons.calendar_today,
                     valueText: _selectedDate == null
                         ? 'Belum Dipilih'
-                        : '${_selectedDate!.day}/${_selectedDate!.month}/${_selectedDate!.year}',
-                    onChanged: (String value) {},
+                        : '${_selectedDate!.day}/${_selectedDate!.month}/${_selectedDate!.year}', 
+                    readOnly: true,
+                    onChanged: (String value) {}, 
                   ),
                   SizedBox(height: 10),
                   _buildInputBox(
@@ -106,8 +107,9 @@ class _PesanRuangScreenState extends State<PesanRuangScreen> {
                     trailingIcon: Icons.access_time_filled,
                     valueText: _selectedTime == null
                         ? 'Belum Dipilih'
-                        : '${_selectedTime!.hour}:${_selectedTime!.minute}',
-                    onChanged: (String value) {},
+                        : '${_selectedTime!.hour}:${_selectedTime!.minute}', 
+                    readOnly: true,
+                    onChanged: (String value) {}, 
                   ),
                   SizedBox(height: 20),
                   ElevatedButton(
@@ -144,6 +146,7 @@ class _PesanRuangScreenState extends State<PesanRuangScreen> {
     VoidCallback? onPressed,
     IconData? trailingIcon,
     String valueText = '',
+    bool readOnly = false, 
     required ValueChanged<String> onChanged,
   }) {
     return Container(
@@ -160,6 +163,8 @@ class _PesanRuangScreenState extends State<PesanRuangScreen> {
             child: TextFormField(
               style: TextStyle(color: Colors.white),
               onChanged: onChanged,
+              readOnly: readOnly,
+              onTap: onPressed, 
               decoration: InputDecoration(
                 labelText: label,
                 labelStyle: TextStyle(color: Colors.white),
@@ -171,6 +176,7 @@ class _PesanRuangScreenState extends State<PesanRuangScreen> {
                     : null,
                 border: InputBorder.none,
               ),
+              controller: TextEditingController(text: valueText),
             ),
           ),
           if (valueText.isNotEmpty) ...[

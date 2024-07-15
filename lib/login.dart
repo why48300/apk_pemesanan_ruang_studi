@@ -196,7 +196,7 @@ class _LoginPageState extends State<LoginPage> {
               Get.to(() => RegisterPage());
             },
             child: const Text(
-              "Sign up",
+              "Sign Up",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 17,

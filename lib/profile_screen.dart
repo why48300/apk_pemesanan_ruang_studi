@@ -3,91 +3,122 @@ import 'package:flutter/material.dart';
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Profil'),
-        elevation: 0, 
+        backgroundColor: Colors.blueAccent,
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Colors.blue, Colors.indigo],
-          ),
-        ),
-        padding: EdgeInsets.all(20),
+      body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-              Padding(
-                padding: EdgeInsets.all(20),
-                child: Card(
-                elevation: 4,  
-                  child: Column(
-                    children: <Widget>[
-                  SizedBox(height: 20),
-                    CircleAvatar(
-                    radius: 50,
-                      backgroundImage: AssetImage('assets/gambar/foto.jpg'), 
-                  ),
-                  SizedBox(height: 10),
-                  
-                      ListTile(
-                        leading: Icon(Icons.person, color: Colors.blue),
-                      title: Text('Nama: Bagus Saputra',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold)),
-                      ),
-                      Divider(),
-                      ListTile(
-                        leading: Icon(Icons.credit_card, color: Colors.blue),
-                      title: Text('NIM: 220103100',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold)),
-                      ),
-                      Divider(),
-                      ListTile(
-                        leading: Icon(Icons.class_, color: Colors.blue),
-                      title: Text('Kelas: TI22A3',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold)),
-                      ),
-                      Divider(),
-                      ListTile(
-                        leading: Icon(Icons.school, color: Colors.blue),
-                      title: Text('Program Studi: S1-Teknik Informatika',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold)),
-                      ),
-                    SizedBox(height: 20), 
-              Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Implement your edit profile logic here
-                    print('Edit profile tapped!');
-                  },
-                  style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: Colors.blue, 
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                  ),
-                  child: Text('Edit Profile'),
-                ),
+            SizedBox(height: 40),
+            Center(
+              child: CircleAvatar(
+                radius: 80,
+                backgroundImage: AssetImage(
+                    'assets/Foto 2 - Adryan Nathanael, Penyanyi lagu Harapku. (Dok. Metronom Musik).jpg'),
               ),
-              SizedBox(height: 20),
+            ),
+            SizedBox(height: 20),
+            Container(
+              width: 300,
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.blueAccent,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3),
+                  ),
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Icon(Icons.person, color: Colors.white),
+                      SizedBox(width: 10),
+                      Text(
+                        'Bagas Saputra',
+                        style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
                     ],
                   ),
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Icon(Icons.confirmation_number, color: Colors.white),
+                      SizedBox(width: 10),
+                      Text(
+                        '220103005',
+                        style: TextStyle(fontSize: 20, color: Colors.white),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Icon(Icons.email, color: Colors.white),
+                      SizedBox(width: 10),
+                      Text(
+                        'bagas@gmail.com',
+                        style: TextStyle(fontSize: 20, color: Colors.white),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Icon(Icons.school, color: Colors.white),
+                      SizedBox(width: 10),
+                      Text(
+                        'S1-Teknik Informatika',
+                        style: TextStyle(fontSize: 20, color: Colors.white),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Icon(Icons.class_, color: Colors.white),
+                      SizedBox(width: 10),
+                      Text(
+                        'TI22A5',
+                        style: TextStyle(fontSize: 20, color: Colors.white),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                textStyle: TextStyle(
+                  fontSize: 16,
                 ),
               ),
+              onPressed: () {},
+              child: Text(
+                'Edit Profil',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 }
-
