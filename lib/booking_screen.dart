@@ -132,16 +132,16 @@ class BookingScreen extends StatelessWidget {
                 ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors
-                      .lightBlueAccent, // Warna tombol baru yang lebih terang
+                      .lightBlueAccent, 
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(
-                        5), // Border radius tombol yang tidak melengkung
+                        5), 
                   ),
-                  elevation: 5, // Bayangan tombol
+                  elevation: 5, 
                   textStyle:
                       TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  shadowColor: Colors.black.withOpacity(0.5), // Warna bayangan
+                  shadowColor: Colors.black.withOpacity(0.5), 
                 ),
               ),
             ],

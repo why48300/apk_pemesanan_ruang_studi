@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hive/hive.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'login.dart';
 import 'home_screen.dart';
-import 'profile_screen.dart'; // Import halaman profil
-import 'riwayat_pemesanan.dart'; // Import halaman riwayat pemesanan
+import 'profile_screen.dart';
+import 'riwayat_pemesanan.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -83,36 +83,65 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisSpacing: 30,
                 children: [
                   itemDashboard(
-                      context,
-                      'Setting',
-                      CupertinoIcons.graph_circle,
-                      Colors.green,
-                      HomeScreen()), // Ganti dengan halaman Setting
+                    context,
+                    'Setting',
+                    CupertinoIcons.graph_circle,
+                    Colors.green,
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeScreen()),
+                      );
+                    },
+                  ),
                   itemDashboard(
-                      context,
-                      'Profil',
-                      CupertinoIcons.person_2,
-                      Colors.purple,
-                      ProfileScreen()), // Ganti dengan halaman Profil
+                    context,
+                    'Profil',
+                    CupertinoIcons.person_2,
+                    Colors.purple,
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProfileScreen()),
+                      );
+                    },
+                  ),
                   itemDashboard(
-                      context,
-                      'Riwayat Pesan',
-                      CupertinoIcons.chat_bubble_2,
-                      Colors.brown,
-                      RiwayatPemesanan(
-                          bookings: [])), // Ganti dengan halaman Riwayat Pesan
+                    context,
+                    'Riwayat Pesan',
+                    CupertinoIcons.chat_bubble_2,
+                    Colors.brown,
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RiwayatPemesanan()),
+                      );
+                    },
+                  ),
                   itemDashboard(
-                      context,
-                      'Logout',
-                      CupertinoIcons.money_dollar_circle,
-                      Colors.indigo,
-                      HomePage()), // Ganti dengan fungsi logout atau halaman Logout
+                    context,
+                    'Logout',
+                    CupertinoIcons.money_dollar_circle,
+                    Colors.indigo,
+                    () async {
+                      await FirebaseAuth.instance.signOut();
+                      Get.offAll(() => LoginPage());
+                    },
+                  ),
                   itemDashboard(
-                      context,
-                      'Pesan ruang',
-                      CupertinoIcons.add_circled,
-                      Colors.teal,
-                      HomeScreen()), // Ganti dengan halaman Pesan Ruang
+                    context,
+                    'Pesan ruang',
+                    CupertinoIcons.add_circled,
+                    Colors.teal,
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeScreen()),
+                      );
+                    },
+                  ),
                 ],
               ),
             ),
@@ -124,20 +153,9 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget itemDashboard(BuildContext context, String title, IconData iconData,
-      Color background, Widget page) {
+      Color background, Function onTap) {
     return GestureDetector(
-      onTap: () async {
-        if (title == 'Logout') {
-          var box = await Hive.openBox('userBox');
-          await box.put("sudahLogin", false);
-          Get.off(() => LoginPage());
-        } else {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => page),
-          );
-        }
-      },
+      onTap: () => onTap(), 
       child: Container(
         decoration: BoxDecoration(
             color: Colors.white,
@@ -153,12 +171,13 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: background,
-                  shape: BoxShape.circle,
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: background,
+                shape: BoxShape.circle,
               ),
-                child: Icon(iconData, color: Colors.white)),
+              child: Icon(iconData, color: Colors.white),
+            ),
             const SizedBox(height: 8),
             Text(title.toUpperCase(),
                 style: Theme.of(context).textTheme.titleMedium)
@@ -167,4 +186,5 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+
 }

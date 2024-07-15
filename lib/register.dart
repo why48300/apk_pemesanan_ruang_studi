@@ -20,11 +20,10 @@ class RegisterPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Tambahkan gambar logo di sini
                 Center(
                   child: Image(
                     image: AssetImage(
-                        'assets/SUKAMAJU.png'), // Ganti dengan path gambar logo Anda
+                        'assets/SUKAMAJU.png'), 
                     width: 100,
                     height: 100,
                   ),

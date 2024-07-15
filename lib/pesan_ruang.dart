@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'room.dart';
 import 'booking.dart';
 import 'booking_confirmation.dart';
-import 'riwayat_pemesanan.dart'; 
+import 'riwayat_pemesanan.dart';
 
 class PesanRuangScreen extends StatefulWidget {
   final Room room;
@@ -25,13 +25,14 @@ class _PesanRuangScreenState extends State<PesanRuangScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Pesan ${widget.room.name}'),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Colors.blue.shade100, Colors.blue.shade200],
+            colors: [Colors.blue, Colors.indigo],
           ),
         ),
         child: Center(
@@ -42,127 +43,71 @@ class _PesanRuangScreenState extends State<PesanRuangScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  Text(
-                    'Detail Ruang:',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),
-                  ),
-                  SizedBox(height: 40),
-                  Row(
-                    children: [
-                      Icon(Icons.location_on, color: Colors.blue),
-                      SizedBox(width: 10),
-                      Text(
-                        'Nama Ruang: ${widget.room.name}',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Icon(Icons.people, color: Colors.blue),
-                      SizedBox(width: 10),
-                      Text(
-                        'Kapasitas: ${widget.room.capacity}',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ],
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image.asset(
+                      widget.room.imagePath,
+                      height: 200,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                   SizedBox(height: 20),
-                  TextField(
-                    decoration: InputDecoration(
-                      labelText: 'Nama Pemesan',
-                      icon: Icon(Icons.person, color: Colors.blue),
-                    ),
+                  Text(
+                    'Isi Form Pemesanan:',
+                    style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  SizedBox(height: 20),
+                  _buildInputBox(
+                    label: 'Nama Pemesan',
+                    icon: Icons.person,
                     onChanged: (value) {
-                      setState(() {
-                        _bookerName = value;
-                      });
+                      _bookerName = value;
                     },
                   ),
                   SizedBox(height: 10),
-                  TextField(
-                    decoration: InputDecoration(
-                      labelText: 'Mata Kuliah',
-                      icon: Icon(Icons.book, color: Colors.blue),
-                    ),
+                  _buildInputBox(
+                    label: 'Kelas',
+                    icon: Icons.school, 
                     onChanged: (value) {
-                      setState(() {
-                        _course = value;
-                      });
+                      _classRoom = value;
                     },
                   ),
                   SizedBox(height: 10),
-                  TextField(
-                    decoration: InputDecoration(
-                      labelText: 'Kelas',
-                      icon: Icon(Icons.class_, color: Colors.blue),
-                    ),
+                  _buildInputBox(
+                    label: 'Mata Kuliah',
+                    icon: Icons.book,
                     onChanged: (value) {
-                      setState(() {
-                        _classRoom = value;
-                      });
+                      _course = value;
                     },
                   ),
                   SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Icon(Icons.date_range, color: Colors.blue),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: Text(
-                          _selectedDate == null
-                              ? 'Pilih Tanggal'
-                              : 'Tanggal Dipilih: ${_selectedDate!.day}/${_selectedDate!.month}/${_selectedDate!.year}',
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          _selectDate(context);
-                        },
-                        child: Text(
-                          'Pilih Tanggal',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                        ),
-                      ),
-                    ],
+                  _buildInputBox(
+                    label: 'Tanggal',
+                    icon: Icons.date_range,
+                    onPressed: () {
+                      _selectDate(context);
+                    },
+                    trailingIcon: Icons.calendar_today,
+                    valueText: _selectedDate == null
+                        ? 'Belum Dipilih'
+                        : '${_selectedDate!.day}/${_selectedDate!.month}/${_selectedDate!.year}',
+                    onChanged: (String value) {},
                   ),
                   SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Icon(Icons.access_time, color: Colors.blue),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: Text(
-                          _selectedTime == null
-                              ? 'Pilih Waktu'
-                              : 'Waktu Dipilih: ${_selectedTime!.hour}:${_selectedTime!.minute}',
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          _selectTime(context);
-                        },
-                        child: Text(
-                          'Pilih Waktu',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                        ),
-                      ),
-                    ],
+                  _buildInputBox(
+                    label: 'Waktu',
+                    icon: Icons.access_time,
+                    onPressed: () {
+                      _selectTime(context);
+                    },
+                    trailingIcon: Icons.access_time_filled,
+                    valueText: _selectedTime == null
+                        ? 'Belum Dipilih'
+                        : '${_selectedTime!.hour}:${_selectedTime!.minute}',
+                    onChanged: (String value) {},
                   ),
                   SizedBox(height: 20),
                   ElevatedButton(
@@ -172,13 +117,15 @@ class _PesanRuangScreenState extends State<PesanRuangScreen> {
                             _confirmBooking(context);
                           },
                     child: Text(
-                      'Konfirmasi Pesanan',
+                      'Konfirmasi',
                       style: TextStyle(color: Colors.white),
                     ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
+                      backgroundColor: Colors.lightBlueAccent,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(5),
                       ),
                     ),
                   ),
@@ -187,6 +134,53 @@ class _PesanRuangScreenState extends State<PesanRuangScreen> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildInputBox({
+    required String label,
+    required IconData icon,
+    VoidCallback? onPressed,
+    IconData? trailingIcon,
+    String valueText = '',
+    required ValueChanged<String> onChanged,
+  }) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.3),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Row(
+        children: [
+          Icon(icon, color: Colors.white),
+          SizedBox(width: 10),
+          Expanded(
+            child: TextFormField(
+              style: TextStyle(color: Colors.white),
+              onChanged: onChanged,
+              decoration: InputDecoration(
+                labelText: label,
+                labelStyle: TextStyle(color: Colors.white),
+                suffixIcon: onPressed != null
+                    ? IconButton(
+                        onPressed: onPressed,
+                        icon: Icon(trailingIcon, color: Colors.white),
+                      )
+                    : null,
+                border: InputBorder.none,
+              ),
+            ),
+          ),
+          if (valueText.isNotEmpty) ...[
+            SizedBox(width: 10),
+            Text(
+              valueText,
+              style: TextStyle(color: Colors.white),
+            ),
+          ],
+        ],
       ),
     );
   }
@@ -238,7 +232,7 @@ class _PesanRuangScreenState extends State<PesanRuangScreen> {
         classRoom: _classRoom,
         usageTime: selectedDateTime,
       );
-      RiwayatPemesanan.add(booking); 
+      RiwayatPemesanan.add(booking);
       Navigator.push(
         context,
         MaterialPageRoute(

@@ -4,9 +4,27 @@ import 'room.dart';
 
 class HomeScreen extends StatelessWidget {
   final List<Room> rooms = [
-    Room(name: 'Ruang 1', capacity: 4, available: true, chairs: 10, tables: 5),
-    Room(name: 'Ruang 2', capacity: 6, available: false, chairs: 10, tables: 5),
-    Room(name: 'Ruang 3', capacity: 8, available: true, chairs: 10, tables: 5),
+    Room(
+        name: 'Ruang 1',
+        capacity: 4,
+        available: true,
+        chairs: 10,
+        tables: 5,
+        imagePath: 'assets/Ruang1.jpg'),
+    Room(
+        name: 'Ruang 2',
+        capacity: 6,
+        available: false,
+        chairs: 10,
+        tables: 5,
+        imagePath: 'assets/ruang3.jpg'),
+    Room(
+        name: 'Ruang 3',
+        capacity: 8,
+        available: true,
+        chairs: 10,
+        tables: 5,
+        imagePath: 'assets/Ruang2.jpg'),
   ];
 
   @override

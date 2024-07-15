@@ -1,153 +1,161 @@
-import 'package:flutter/material.dart';
-import 'package:pemesanan_ruang_studi/pesan_ruang.dart';
-import 'room.dart';
+// import 'package:flutter/cupertino.dart';
+// import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
+// import 'login.dart';
+// import 'home_screen.dart';
+// import 'profile_screen.dart';
+// import 'riwayat_pemesanan.dart';
 
-class BookingScreen extends StatelessWidget {
-  final Room room;
-  final int index;
+// class HomePage extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: 'Dashboard',
+//       theme: ThemeData(
+//         primarySwatch: Colors.indigo,
+//       ),
+//       home: const MyHomePage(),
+//     );
+//   }
+// }
 
-  BookingScreen({required this.room, required this.index});
+// class MyHomePage extends StatefulWidget {
+//   const MyHomePage({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Pesan ${room.name}'),
-      ),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Colors.blue, Colors.indigo],
-          ),
-        ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.all(20),
-                margin: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
-                      blurRadius: 10,
-                      offset: Offset(0, 5),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    if (index == 0 || index == 2)
-                      ClipRRect(
-                        borderRadius:
-                            BorderRadius.vertical(top: Radius.circular(10)),
-                        child: Image.asset(
-                          index == 0
-                              ? 'assets/Ruang_.jpg'
-                              : 'assets/Ruang2.jpg',
-                          height: 150,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    SizedBox(height: 10),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Icon(Icons.room, color: Colors.blue),
-                              SizedBox(width: 10),
-                              Text(
-                                room.name,
-                                style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 10),
-                          Row(
-                            children: [
-                              Icon(Icons.group, color: Colors.blue),
-                              SizedBox(width: 10),
-                              Text(
-                                'Kapasitas: ${room.capacity} orang',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 10),
-                          Row(
-                            children: [
-                              Icon(Icons.chair, color: Colors.blue),
-                              SizedBox(width: 10),
-                              Text(
-                                'Jumlah Kursi: ${room.chairs}',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 10),
-                          Row(
-                            children: [
-                              Icon(Icons.table_chart, color: Colors.blue),
-                              SizedBox(width: 10),
-                              Text(
-                                'Jumlah Meja: ${room.tables}',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => PesanRuangScreen(room: room),
-                    ),
-                  );
-                },
-                child: Text(
-                  'Pesan',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors
-                      .lightBlueAccent, // Warna tombol baru yang lebih terang
-                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                        5), // Border radius tombol yang tidak melengkung
-                  ),
-                  elevation: 5, // Bayangan tombol
-                  textStyle:
-                      TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  shadowColor: Colors.black.withOpacity(0.5), // Warna bayangan
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   State<MyHomePage> createState() => _MyHomePageState();
+// }
+
+// class _MyHomePageState extends State<MyHomePage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: ListView(
+//         padding: EdgeInsets.zero,
+//         children: [
+//           Container(
+//             decoration: BoxDecoration(
+//               color: Theme.of(context).primaryColor,
+//               borderRadius: const BorderRadius.only(
+//                 bottomRight: Radius.circular(50),
+//               ),
+//             ),
+//             child: Column(
+//               children: [
+//                 const SizedBox(height: 50),
+//                 ListTile(
+//                   contentPadding: const EdgeInsets.symmetric(horizontal: 30),
+//                   title: Text('Nathaniel Ardiyan Putra',
+//                       style: Theme.of(context)
+//                           .textTheme
+//                           .headlineSmall
+//                           ?.copyWith(color: Colors.white)),
+//                   subtitle: Text('220103101',
+//                       style: Theme.of(context)
+//                           .textTheme
+//                           .titleMedium
+//                           ?.copyWith(color: Colors.white54)),
+//                   trailing: const CircleAvatar(
+//                     radius: 30,
+//                     backgroundImage: AssetImage(
+//                         'assets/Foto 2 - Adryan Nathanael, Penyanyi lagu Harapku. (Dok. Metronom Musik).jpg'),
+//                   ),
+//                 ),
+//                 const SizedBox(height: 30)
+//               ],
+//             ),
+//           ),
+//           Container(
+//             color: Theme.of(context).primaryColor,
+//             child: Container(
+//               padding: const EdgeInsets.symmetric(horizontal: 30),
+//               decoration: const BoxDecoration(
+//                   color: Colors.white,
+//                   borderRadius:
+//                       BorderRadius.only(topLeft: Radius.circular(200))),
+//               child: GridView.count(
+//                 shrinkWrap: true,
+//                 physics: const NeverScrollableScrollPhysics(),
+//                 crossAxisCount: 2,
+//                 crossAxisSpacing: 40,
+//                 mainAxisSpacing: 30,
+//                 children: [
+//                   itemDashboard(context, 'Setting', CupertinoIcons.graph_circle,
+//                       Colors.green, HomeScreen()),
+//                   itemDashboard(context, 'Profil', CupertinoIcons.person_2,
+//                       Colors.purple, ProfileScreen()),
+//                   itemDashboard(
+//                       context,
+//                       'Riwayat Pesan',
+//                       CupertinoIcons.chat_bubble_2,
+//                       Colors.brown,
+//                       RiwayatPemesanan(bookings: [])),
+//                   itemDashboard(
+//                     context,
+//                     'Logout',
+//                     CupertinoIcons.money_dollar_circle,
+//                     Colors.indigo,
+//                     () async {
+//                       await FirebaseAuth.instance.signOut();
+//                       Get.offAll(() => LoginPage());
+//                     },
+//                   ),
+//                   itemDashboard(context, 'Pesan ruang',
+//                       CupertinoIcons.add_circled, Colors.teal, HomeScreen()),
+//                 ],
+//               ),
+//             ),
+//           ),
+//           const SizedBox(height: 20)
+//         ],
+//       ),
+//     );
+//   }
+
+//   Widget itemDashboard(BuildContext context, String title, IconData iconData,
+//       Color background, Widget page) {
+//     return GestureDetector(
+//       onTap: () {
+//         if (title == 'Logout') {
+//           FirebaseAuth.instance.signOut();
+//           Get.offAll(() => LoginPage());
+//         } else {
+//           Navigator.push(
+//             context,
+//             MaterialPageRoute(builder: (context) => page),
+//           );
+//         }
+//       },
+//       child: Container(
+//         decoration: BoxDecoration(
+//             color: Colors.white,
+//             borderRadius: BorderRadius.circular(10),
+//             boxShadow: [
+//               BoxShadow(
+//                   offset: const Offset(0, 5),
+//                   color: Theme.of(context).primaryColor.withOpacity(.2),
+//                   spreadRadius: 2,
+//                   blurRadius: 5)
+//             ]),
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             Container(
+//               padding: const EdgeInsets.all(10),
+//               decoration: BoxDecoration(
+//                 color: background,
+//                 shape: BoxShape.circle,
+//               ),
+//               child: Icon(iconData, color: Colors.white),
+//             ),
+//             const SizedBox(height: 8),
+//             Text(title.toUpperCase(),
+//                 style: Theme.of(context).textTheme.titleMedium)
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }

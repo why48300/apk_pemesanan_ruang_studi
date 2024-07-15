@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'booking.dart';
 
 class RiwayatPemesanan extends StatelessWidget {
-  static List<Booking> _bookings = []; // Buat daftar pemesanan
+  static List<Booking> _bookings = []; 
 
-  RiwayatPemesanan({required List<Booking> bookings}) {
-    _bookings = bookings; // Inisialisasi daftar pemesanan
+  static void add(Booking booking) {
+    _bookings.add(booking);
   }
 
   @override
@@ -15,30 +15,30 @@ class RiwayatPemesanan extends StatelessWidget {
         title: Text('Riwayat Pemesanan'),
       ),
       body: _bookings.isEmpty
-          ? Center(
-              child: Text('Tidak ada riwayat pemesanan.'),
-            )
+          ? Center(child: Text('Tidak ada riwayat pemesanan'))
           : ListView.builder(
               itemCount: _bookings.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text('Nama Pemesan: ${_bookings[index].bookerName}'),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Mata Kuliah: ${_bookings[index].course}'),
-                      Text('Kelas: ${_bookings[index].classRoom}'),
-                      Text('Waktu Pemakaian: ${_bookings[index].usageTime}'),
-                    ],
+                final booking = _bookings[index];
+                String formattedTime =
+                    '${booking.usageTime.hour}:${booking.usageTime.minute.toString().padLeft(2, '0')}';
+                return Card(
+                  child: ListTile(
+                    title: Text('Ruang: ${booking.room.name}'),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Pemesan: ${booking.bookerName}'),
+                        Text('Kelas: ${booking.classRoom}'),
+                        Text('Mata Kuliah: ${booking.course}'),
+                        Text(
+                            'Waktu: ${booking.usageTime.day}/${booking.usageTime.month}/${booking.usageTime.year} $formattedTime'),
+                      ],
+                    ),
                   ),
                 );
               },
             ),
     );
-  }
-
-  // Metode statis untuk menambah pemesanan
-  static void add(Booking confirmedBooking) {
-    _bookings.add(confirmedBooking);
   }
 }

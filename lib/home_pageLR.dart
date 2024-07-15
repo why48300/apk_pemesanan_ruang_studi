@@ -19,8 +19,8 @@ class HomePageLR extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Image.asset(
-                  'assets/SUKAMAJU.png', // Path ke gambar/logo Anda
-                  height: 100, // Sesuaikan dengan kebutuhan
+                  'assets/SUKAMAJU.png',
+                  height: 100, 
                 ),
                 SizedBox(height: 20),
                 Text(
@@ -28,7 +28,7 @@ class HomePageLR extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color:
-                        Color.fromARGB(255, 255, 255, 255), // Warna teks putih
+                        Color.fromARGB(255, 255, 255, 255), 
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
@@ -53,19 +53,19 @@ class HomePageLR extends StatelessWidget {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(
-                          255, 255, 255, 255), // Warna tombol
+                          255, 255, 255, 255), 
                       padding:
-                          EdgeInsets.symmetric(vertical: 20), // Padding tombol
+                          EdgeInsets.symmetric(vertical: 20), 
                       shape: RoundedRectangleBorder(
                         borderRadius:
-                            BorderRadius.circular(10), // Membuat kotak
+                            BorderRadius.circular(10), 
                       ),
                     ),
                     child: Text(
                       'Login',
                       style: TextStyle(
                         color: Color.fromARGB(
-                            255, 0, 200, 255), // Warna teks tombol
+                            255, 0, 200, 255), 
                         fontSize: 18,
                       ),
                     ),
@@ -83,19 +83,19 @@ class HomePageLR extends StatelessWidget {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(
-                          255, 255, 255, 255), // Warna tombol
+                          255, 255, 255, 255), 
                       padding:
-                          EdgeInsets.symmetric(vertical: 20), // Padding tombol
+                          EdgeInsets.symmetric(vertical: 20), 
                       shape: RoundedRectangleBorder(
                         borderRadius:
-                            BorderRadius.circular(10), // Membuat kotak
+                            BorderRadius.circular(10), 
                       ),
                     ),
                     child: Text(
                       'Register',
                       style: TextStyle(
                         color: Color.fromARGB(
-                            255, 0, 200, 255), // Warna teks tombol
+                            255, 0, 200, 255), 
                         fontSize: 18,
                       ),
                     ),

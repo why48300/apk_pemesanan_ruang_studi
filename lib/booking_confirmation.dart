@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'booking.dart';
-import 'home_page.dart'; // Import home_page.dart di sini
+import 'home_page.dart';
+import 'riwayat_pemesanan.dart'; 
 
 class BookingConfirmationScreen extends StatelessWidget {
   final Booking booking;
@@ -16,7 +17,7 @@ class BookingConfirmationScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Konfirmasi Pemesanan'),
       ),
-      backgroundColor: Color.fromARGB(255, 0, 179, 255), // Tambahkan latar belakang di sini
+      backgroundColor: Color.fromARGB(255, 0, 179, 255), 
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -31,8 +32,8 @@ class BookingConfirmationScreen extends StatelessWidget {
               padding: EdgeInsets.all(20),
               margin: EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: Colors.white, // Warna latar belakang kotak
-                borderRadius: BorderRadius.circular(10), // Bentuk tepi kotak
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10), 
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,7 +42,7 @@ class BookingConfirmationScreen extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.person,
-                        color: Colors.blue, // Warna ikon
+                        color: Colors.blue, 
                       ),
                       SizedBox(width: 10),
                       Text(
@@ -55,7 +56,7 @@ class BookingConfirmationScreen extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.room,
-                        color: Colors.blue, // Warna ikon
+                        color: Colors.blue, 
                       ),
                       SizedBox(width: 10),
                       Text(
@@ -69,7 +70,7 @@ class BookingConfirmationScreen extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.date_range,
-                        color: Colors.blue, // Warna ikon
+                        color: Colors.blue, 
                       ),
                       SizedBox(width: 10),
                       Text(
@@ -83,7 +84,7 @@ class BookingConfirmationScreen extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.access_time,
-                        color: Colors.blue, // Warna ikon
+                        color: Colors.blue, 
                       ),
                       SizedBox(width: 10),
                       Text(
@@ -97,7 +98,7 @@ class BookingConfirmationScreen extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.school,
-                        color: Colors.blue, // Warna ikon
+                        color: Colors.blue, 
                       ),
                       SizedBox(width: 10),
                       Text(
@@ -111,7 +112,7 @@ class BookingConfirmationScreen extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.class_,
-                        color: Colors.blue, // Warna ikon
+                        color: Colors.blue, 
                       ),
                       SizedBox(width: 10),
                       Text(
@@ -126,13 +127,21 @@ class BookingConfirmationScreen extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Lakukan operasi penyimpanan atau kirim data ke server
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => HomePage()), // Rute yang menuju ke home_page.dart
+                  MaterialPageRoute(builder: (context) => HomePage()), 
                 );
               },
               child: Text('Kembali ke Beranda'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RiwayatPemesanan()),
+                );
+              },
+              child: Text('Lihat Riwayat'),
             ),
           ],
         ),

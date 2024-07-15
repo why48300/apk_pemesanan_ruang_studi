@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Define text style for easy adjustments and uniformity
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Profil'),
-        elevation: 0, // Remove shadow for a cleaner look
+        elevation: 0, 
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -25,13 +24,13 @@ class ProfileScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(20),
                 child: Card(
-                  elevation: 4,  // Adds shadow to the card
+                elevation: 4,  
                   child: Column(
                     children: <Widget>[
                   SizedBox(height: 20),
                     CircleAvatar(
                     radius: 50,
-                    backgroundImage: AssetImage('assets/gambar/foto.jpg'), // Ganti dengan path gambar profil Anda
+                      backgroundImage: AssetImage('assets/gambar/foto.jpg'), 
                   ),
                   SizedBox(height: 10),
                   
@@ -62,7 +61,7 @@ class ProfileScreen extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold)),
                       ),
-                      SizedBox(height: 20), // Space before the button
+                    SizedBox(height: 20), 
               Center(
                 child: ElevatedButton(
                   onPressed: () {
@@ -70,7 +69,8 @@ class ProfileScreen extends StatelessWidget {
                     print('Edit profile tapped!');
                   },
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white, backgroundColor: Colors.blue, // Text color
+                          foregroundColor: Colors.white,
+                          backgroundColor: Colors.blue, 
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
