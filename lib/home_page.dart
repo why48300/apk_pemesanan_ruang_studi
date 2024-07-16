@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart'; // Tambahkan ini untuk CupertinoIcons
+import 'package:flutter/cupertino.dart'; 
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'login.dart';
@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Dashboard',
       theme: ThemeData(
-        primarySwatch: Colors.blue, // Mengganti warna menjadi biru
+        primarySwatch: Colors.blue, 
       ),
       home: const MyHomePage(),
     );
@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Container(
-            color: Colors.blue, // Mengganti warna menjadi biru
+            color: Colors.blue, 
             child: Container(
               height: MediaQuery.of(context).size.height -
                   200, // Adjust the height as needed
@@ -104,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             'Profil',
                             Icons.person,
                             Colors.purple,
-                            ProfileScreen()), // Ganti dengan halaman Profil
+                            ProfileScreen()), 
                         _itemDashboard(context, 'Pesan ruang',
                             Icons.room_service, Colors.teal, HomeScreen()),
                         _itemDashboard(
@@ -112,10 +112,10 @@ class _MyHomePageState extends State<MyHomePage> {
                             'Riwayat Pesan',
                             Icons.history,
                             Colors.brown,
-                            RiwayatPemesanan()), // Ganti dengan halaman Riwayat Pesan
+                            RiwayatPemesanan()), 
                         _itemDashboard(context, 'Logout', Icons.exit_to_app,
                             Colors.indigo,
-                            _logout), // Fungsi logout
+                            _logout), 
                       ],
                     ),
                   ),
